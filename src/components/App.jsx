@@ -6,8 +6,14 @@ function App() {
   function handleClick() {
     setHeading(" Name submitted");
   }
+  const [isMouseOver, setMouseOver] = useState(false);
   function handleClick2() {
     changeText("hi i had modified paragraph using button and using useState");
+    setMouseOver(true);
+  }
+
+  function handleClick3() {
+    setMouseOver(false);
   }
 
   return (
@@ -16,7 +22,12 @@ function App() {
       <p>{paragraphText}</p>
       <input type="text" placeholder="What's your name?" />
       <button onClick={handleClick}>Submit</button>
-      <button type="submit" onMouseOver={handleClick2}>
+      <button
+        type="submit"
+        style={{ backgroundColor: isMouseOver ? "black" : "white" }}
+        onMouseOver={handleClick2}
+        onMouseOut={handleClick3}
+      >
         change text
       </button>
     </div>
